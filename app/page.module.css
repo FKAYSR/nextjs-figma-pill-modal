@@ -12,3 +12,8 @@
   flex-wrap: wrap;
   gap: 1rem;
 }
+
+.intro {
+  color: var(--color-neutral-700);
+  font-size: var(--font-size-sm);
+}

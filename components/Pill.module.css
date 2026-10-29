@@ -1,11 +1,61 @@
-/* Figma: the component set "Pill". Use your tokens with var(). */
-
-/* Auto layout -> flexbox (step 1.3) */
+/* Figma: the component set "Pill". The values below use the shared tokens. */
 .pill {
+  display: inline-flex;
+  min-height: var(--button-height);
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--spacing-sm);
+  border: 1px solid var(--color-gray);
+  background: var(--color-background);
+  font: inherit;
+  font-size: var(--font-size-md);
+  white-space: nowrap;
+  cursor: pointer;
+  transition:
+    border-color 180ms ease,
+    border-radius 180ms ease,
+    color 180ms ease,
+    background-color 180ms ease;
 }
 
-/* Type=Primary and Type=Secondary -> one class per type (step 1.4) */
+.primary {
+  /* Type=Primary, State=Default */
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  font-weight: 400;
+}
 
-/* State=Hover -> :hover and :focus-visible (step 1.4) */
+.secondary {
+  /* Type=Secondary, State=Default */
+  border-radius: var(--radius-full);
+  color: var(--color-neutral-600);
+  font-weight: 600;
+  letter-spacing: -0.18px;
+}
 
-/* Smart Animate -> transition on .pill (step 1.5) */
+.primary:hover,
+.primary:focus-visible {
+  /* State=Hover: transition to the Primary hover colors and full radius. */
+  border-color: var(--color-primary);
+  border-radius: var(--radius-full);
+  color: var(--color-primary);
+}
+
+.secondary:hover,
+.secondary:focus-visible {
+  /* State=Hover: transition to the Secondary hover colors and full radius. */
+  border-color: var(--color-secondary);
+  border-radius: var(--radius-full);
+  color: var(--color-secondary);
+}
+
+.pill:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--color-primary) 30%, transparent);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pill {
+    transition: none;
+  }
+}
